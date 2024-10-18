@@ -10,8 +10,9 @@ pub fn main() {
     for i in 0..100 {
         universe.tick();
     }
-
-//     entrypoint::io::println(&n.to_string());
-//     entrypoint::io::println("-th fibonacci number is:");
-//     entrypoint::io::println(&b.to_string());
+    for i in 0..10 {
+        for j in 0..10 {
+            entrypoint::io::println(universe.get_index(i, j).to_string().as_str())
+        }
+    }
 }

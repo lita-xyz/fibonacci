@@ -27,7 +27,7 @@ pub struct Universe {
 }
 
 impl Universe {
-    fn get_index(&self, row: u32, column: u32) -> usize {
+    pub fn get_index(&self, row: u32, column: u32) -> usize {
         (row * UNIVERSE_WIDTH + column) as usize
     }
 
