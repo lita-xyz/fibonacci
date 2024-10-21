@@ -5,7 +5,7 @@ entrypoint::entrypoint!(main);
 pub fn main() {
     entrypoint::io::println("Please enter a number from 0 to 46:");
     // Read a line from stdin and parse it as an u8.
-    let n = entrypoint::io::read_line_u8().unwrap();
+    let n = entrypoint::io::read_line::<u8>().unwrap();
     // n that is larger than 46 will overflow the u32 type.
     if n > 46 {
         entrypoint::io::println("Error: n is too large. Please enter a number no more than 46.");
