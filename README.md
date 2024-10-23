@@ -25,6 +25,14 @@ valida> cargo +valida build
 To run the program, in the Valida shell, from the root directory of this repo:
 
 ```
+valida> valida run ./target/delendum-unknown-baremetal-gnu/debug/fibonacci log
+```
+
+The `run` command runs the program, prompting for an input, and print the output to the console and the file `log` in the current directory.
+
+To run the program with a file input, you can use the following commands:
+
+```
 valida> echo -ne '\x19' > 25.bin
 valida> valida run ./target/delendum-unknown-baremetal-gnu/debug/fibonacci log 25.bin
 ```
