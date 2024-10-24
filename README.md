@@ -30,17 +30,6 @@ valida> valida run ./target/delendum-unknown-baremetal-gnu/debug/fibonacci log
 
 The `run` command runs the program, prompting for an input, and print the output to the console and the file `log` in the current directory.
 
-To run the program with a file input, you can use the following commands:
-
-```
-valida> echo -ne '\x19' > 25.bin
-valida> valida run ./target/delendum-unknown-baremetal-gnu/debug/fibonacci log 25.bin
-```
-
-The file 25.bin is a binary file containing the number 25. This is the input to the `fibonacci` program.
-
-The `run` command will load the binary, and execute the program. The program will then run, and print the output to the console and the file `log` in the current directory.
-
 The log file should contain:
 
 ```
@@ -48,3 +37,14 @@ The log file should contain:
 -th fibonacci number is:
 75025
 ```
+
+## Writing your own Valida project
+
+For projects with dependencies on `io` or `rand`, make sure your `main` and `Cargo.toml` include the code in this template. Also, make sure you have the same `.cargo/config.toml` in your project. If you want to build the project not targeting Valida, remove the `[build]` section in `.cargo/config.toml` and `cargo` will build the project targeting the host machine, unless otherwise specified.
+
+We edited some functions to make them compatible with the Valida VM. When using these, the default Rust functions won't work. We call the Valida version with the `entrypoint::` prefix.
+
+- `io`: Valida only supports standard `io` to the extent of `stdin` and `stdout`. To use `println` in Valida, one needs to call `entrypoint::io::println` as in `my-project`. A better `io` library will be added later.
+- `rand`: to ensure the VM can prove the calculation of a given random number, we use our own function to generate a random byte with a specific seed.
+
+These implementations are in `valida-rs/src/io.rs` and `valida-rs/src/rand.rs`.
