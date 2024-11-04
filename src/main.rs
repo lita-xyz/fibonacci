@@ -1,6 +1,6 @@
 #![no_main]
 
-entrypoint::entrypoint!(main);
+valida_rs::entrypoint!(main);
 
 struct Sudoku {
 	r: [[u16; 9]; 324],
@@ -66,7 +66,7 @@ impl Sudoku {
 		let mut min = 10;
 		let mut min_c = 0;
 		for i in self.c[r as usize] {
-			sc[i as usize] += (v<<7) as u8;
+			sc[i as usize] = sc[i as usize].wrapping_add((v<<7) as u8);
 		}
 		for c in self.c[r as usize] {
 			if v > 0 {
@@ -123,7 +123,7 @@ impl Sudoku {
 				if dir == -1 && cr[i as usize] >= 0 {
 					self.update(&mut sr, &mut sc, self.r[c][cr[i as usize] as usize], -1);
 				}
-				let mut r2 = (cr[i as usize] as usize) + 1;
+				let mut r2 = (cr[i as usize] + 1) as usize;
 				while r2 < 9 && sr[self.r[c][r2] as usize] != 0 {
 					r2 += 1;
 				}
@@ -145,7 +145,7 @@ impl Sudoku {
 				let r = self.r[cc[j] as usize][cr[j] as usize];
 				s8[(r/9) as usize] = (r%9 + '1' as u16) as u8;
 			}
-			println!("{}", std::str::from_utf8(&s8).unwrap());
+			valida_rs::io::println(&format!("{}", std::str::from_utf8(&s8).unwrap()));
 			i -= 1; dir = -1;
 		}
 	}
@@ -179,7 +179,7 @@ fn main() {
 	for _ in 0..n {
 		for j in 0..2 {
 			s.solve(hard20[j]);
-			entrypoint::io::println("");
+			valida_rs::io::println("");
 		}
 	}
 }
