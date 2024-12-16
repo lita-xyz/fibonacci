@@ -8,16 +8,34 @@ Using this template requires the Valida toolchain, version 0.6.0-alpha to be ins
 
 ### Docker-based installation
 
-We provide a Docker container with the Valida LLVM and Rust toolchains already installed. This is supported on any platform which supports Docker, including recent versions of MacOS and Windows. Docker is the only supported method of running on platforms other than x86 Linux.
+#### x86_64-based platforms
+
+To install and use the toolchain via Docker on a 64-bit computer with an Intel-compatible chipset (x86_64), such as Intel- or AMD-based computers:
 
 ```bash
 # Download the container
-docker pull ghcr.io/lita-xyz/llvm-valida-releases/valida-build-container:v0.6.0-alpha
+docker pull ghcr.io/lita-xyz/llvm-valida-releases/valida-build-container:v0.7.0-alpha-amd64
 
-cd your-valida-project
+# cd your-valida-project
 
 # Enter the container:
-docker run --platform linux/amd64 -it --rm -v $(realpath .):/src ghcr.io/lita-xyz/llvm-valida-releases/valida-build-container:v0.6.0-alpha
+docker run --platform linux/amd64 -it --rm -v $(realpath .):/src ghcr.io/lita-xyz/llvm-valida-releases/valida-build-container:v0.7.0-alpha-amd64
+
+# You are now in a shell with the valida rust toolchain installed!
+```
+
+#### ARM64-based platforms
+
+To install and use the toolchain via Docker on a 64-bit computer with an ARM64-compatible chipset (ARM64), such as Apple silicon-based computers:
+
+```bash
+# Download the container
+docker pull ghcr.io/lita-xyz/llvm-valida-releases/valida-build-container:v0.7.0-alpha-arm64
+
+# cd your-valida-project
+
+# Enter the container:
+docker run --platform linux/arm64 -it --rm -v $(realpath .):/src ghcr.io/lita-xyz/llvm-valida-releases/valida-build-container:v0.7.0-alpha-arm64
 
 # You are now in a shell with the valida rust toolchain installed!
 ```
