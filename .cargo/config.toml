@@ -2,6 +2,7 @@
 target = "valida-unknown-baremetal-gnu"
 
 [target.valida-unknown-baremetal-gnu]
+runner = "/valida-toolchain/valida-runner.sh"
 linker = "/valida-toolchain/bin/ld.lld"
 rustflags = [
     "-C", "link-arg=/valida-toolchain/ValidaEntryPoint.o",
