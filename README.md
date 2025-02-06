@@ -95,8 +95,8 @@ The `run` command runs the program, prompting for an input, and print the output
 To run the program with a file input, you can use the following commands:
 
 ```bash
-echo -ne '\x19' > 25.bin
-valida run ./target/valida-unknown-baremetal-gnu/debug/fibonacci log 25.bin
+echo -ne 25 > 25.input
+valida run ./target/valida-unknown-baremetal-gnu/debug/fibonacci log 25.input
 ```
 
 The file 25.bin is a binary file containing the number 25. This is the input to the `fibonacci` program.
