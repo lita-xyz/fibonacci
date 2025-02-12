@@ -177,3 +177,7 @@ The `entrypoint!` macro:
 
 
 The `#![no_main]` (with `!`) is an inner attribute that applies to the entire crate, telling the Rust compiler not to look for a standard main function entry point. We need this because we are providing a custom entry point.
+
+## Issue reporting
+
+Any issues report at https://github.com/lita-xyz/valida-releases/issues
