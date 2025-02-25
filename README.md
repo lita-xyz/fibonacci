@@ -1,5 +1,7 @@
 # Fibonacci: A template project for Valida
 
+Note: this template is no longer needed as Valida now doesn't require any boilerplate for this example to work. Therefore, this is no longer maintained.
+
 This is a simple program that calculates the n-th fibonacci number and proves the execution of the computation in Valida. You can use this as a template for your projects which create Valida proofs of execution of Rust code.
 
 ## Installing the Valida toolchain
